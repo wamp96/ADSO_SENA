@@ -24,7 +24,8 @@ class Game {
     this.min = 0;// Attribute for min array length 
     this.maxCard = (this.num * this.num) / 2; //Number of cards to be used
     this.puntaje = 0;
-    this.seleccion = [];
+    this.selected = true;
+    this.selectedCard = [];
   }
 
   //Method to read the JSON file, execute the setElements method sending an array of data
@@ -95,28 +96,43 @@ class Game {
     for (let i = 0; i < this.contCardGame.length; i++) {
       const objImg = this.contCardGame[i].querySelector('img');
       //const objVal = this.contCardGame[i].querySelector('p').textContent;
-      this.contCardGame[i].addEventListener('click', function () {
+      this.contCardGame[i].addEventListener('click', () => {
         if (objImg.src == pathDefault) {
           objImg.src = objImg.dataset.src;
-          puntaje += getNewArray[i].valor;
-          seleccion.push(getNewArray[i].id);         
+          //puntaje += getNewArray[i].valor;
+          //seleccion.push(getNewArray[i].id);    
+          this.setSelectCard(objImg)     
         }
       });       
     }
   }
+
+  setSelectCard(obj){
+    var puntaje= this.puntaje;
+    
+    if(this.selected){
+      this.selected=false;
+      this.selectedCard[0]=obj.dataset.src;
+    }else{
+      this.selectedCard[1]=obj.dataset.src;
+    }
+    if(this.selectedCard.length>1){
+      if(this.selectedCard[0]==this.selectedCard[1]){
+        alert("ok");
+      }else{
+        this.contCardGame.forEach(card => {
+          const img = card.querySelector('img');
+          img.src = this.pathImgDafault;
+        });
+        this.seleccion = []; 
+      }  
+      //this.selectedCard="";     
+    }
+    
+  }
   
 
   couplesSelection(){
-    var seleccion = this.seleccion;
-    
-    let imp = "";
-    
-    
-    for (let i = 0; i < seleccion.length; i++) {
-        imp =  "<div>HOLA</div>"     
-        this.seleccion = []; // Vaciar el array de selección
-    }
-    console.log(seleccion);
-        
-    }
+    //console.log("console");    
+  }
 }
