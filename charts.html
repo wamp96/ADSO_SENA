@@ -1,0 +1,125 @@
+<html>
+
+<head>
+
+</head>
+
+<style>
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1 {
+    color: #ccc;
+    top: 10%
+  }
+</style>
+
+<body style="background-color: black;">
+  <h1 style="color: #ccc;top: 10%;">GOOGLE CHART</h1>
+  <!--Tablas que contienen los div tomando su ID -->
+  <table class="columns">
+    <tr>
+      <td>
+        <h1> PIE CHART</h1>
+        <div id="piechart_div" style="border: 1px solid #ccc"></div>
+      </td>
+      <td>
+        <h1> BARCHART</h1>
+        <div id="barchart_div" style="border: 1px solid #ccc"></div>
+      </td>
+      <td>
+        <h1> LINE CHART</h1>
+        <div id="LineChart_div" style="border: 1px solid #ccc"></div>
+      </td>
+      <td>
+        <h1> AREA CHART</h1>
+        <div id="AreaChart_div" style="border: 1px solid #ccc"></div>
+      </td>
+    </tr>
+  </table>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    var arrayDataProducts = [];
+    function getDataJson() {
+
+      const URL = "./assets/doc/products.json";
+
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      fetch(URL)
+        .then(response => response.json())
+        .then(data => console.log(arrayDataProducts = data))
+        .catch(error => console.log(error))
+        .finally(() => console.log(/*{ aviso de fim de carregamento }*/+this))
+
+    }
+
+
+    // Load Charts and the corechart and barchart packages.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Draw the pie chart and bar chart when Charts is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+    getDataJson();
+
+    // Function to draw the charts.
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Topping');
+      data.addColumn('number', 'Slices');
+      console.log(arrayDataProducts[0]);
+      for (let i = 0; i < arrayDataProducts.length; i++) {
+        data.addRows([[arrayDataProducts[i].name, arrayDataProducts[i].value]]);
+      }
+
+      var piechart_options = {
+        title: 'Pie Chart: How Much Pizza I Ate Last Night',
+        width: 400,
+        height: 300
+      };
+      var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+      piechart.draw(data, piechart_options);
+
+      var barchart_options = {
+        title: 'Barchart: How Much Pizza I Ate Last Night',
+        width: 400,
+        height: 300,
+        legend: 'none'
+      };
+      var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+      barchart.draw(data, barchart_options);
+
+
+
+      var LineChart_options = {
+        title: 'LineChart: How Much Pizza I Ate Last Night',
+        width: 400,
+        height: 300,
+        legend: 'none'
+      };
+      var LineChart = new google.visualization.LineChart(document.getElementById('LineChart_div'));
+      LineChart.draw(data, barchart_options);
+
+      var AreaChart_options = {
+        title: 'AreaChart: How Much Pizza I Ate Last Night',
+        width: 400,
+        height: 300,
+        legend: 'none'
+      };
+      var AreaChart = new google.visualization.AreaChart(document.getElementById('AreaChart_div'));
+      AreaChart.draw(data, AreaChart_options);
+
+
+    }
+  </script>
+</body>
+
+</html>
