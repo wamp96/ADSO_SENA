@@ -1,0 +1,50 @@
+@font-face {
+  font-family: honk;
+  src: url('../fonts/Honk/BungeeSpice-Regular.ttf');
+}
+
+body {
+  background-image: url(../img/background/fondo.jpg);
+  font-family: honk;
+  font-size: large;
+  text-transform: uppercase !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.titleGames {
+  font-size: 5em;
+}
+
+input {
+  text-transform: uppercase !important;
+  background: #000 !important;
+}
+
+select {
+  text-transform: uppercase !important;
+  background: #000 !important;
+  cursor: pointer;
+}
+
+#btn_start {
+  background: #000;
+  border: solid 2px green;
+  font-size: 2em;
+}
+
+#btn_start:hover {
+  background: rgb(0, 96, 0);
+  background: linear-gradient(0deg, rgba(0, 96, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  border-radius: 10px;
+  font-size: 1.9em;
+}
+
+.bg-dark-blue {
+  background-color: #001f3f;
+  /* Color azul oscuro */
+  color: #ffffff;
+  /* Color de texto blanco */
+}

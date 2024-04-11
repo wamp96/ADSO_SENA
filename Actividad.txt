@@ -1,0 +1,11 @@
+Requisitos funcionales)
+
+● El juego debe ser desarrollado con programación orientada a objetos (OK)
+● Debe poder bloquear las imágenes que estés seleccionada (OK)
+● Debe permitir el bloqueo de todas las imágenes cuando se seleccione alguna (OK)
+● Al conseguir un par de dos imágenes es necesario que las imágenes cambie de imagen y queden bloqueadas (ok)
+● Al seleccionar dos imágenes que no son pares se debe desbloquear las imágenes y volver al estado inicial (ok)
+● Cada imagen tiene un valor y al seleccionar el par de la misma imagen se suman sus valores (OK)
+● Se debe promediar el valor total de todas las imágenes, siendo este el 100% (OK)
+● Cuando se seleccione las parejas debe acumular los puntajes mostrando un avance ()
+● Se debe definir las condiciones del ganador ()
